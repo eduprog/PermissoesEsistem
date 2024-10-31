@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text.Json;
 
 public class Program
 {
@@ -18,22 +19,28 @@ public class Program
         //     }
         // }
 
-        var constantes = Util.ListarConstantes2(permissoesPessoa).ToList();
-        foreach (var item in constantes)
+        // var constantes = Util.ListarConstantes2(permissoesPessoa).ToList();
+        // foreach (var item in constantes)
+        // {
+        //     Console.WriteLine(item);
+        // }
+
+        // Console.WriteLine("");
+
+        var usuarioPermission = new UsuarioPermissaoEsistem();
+        
+
+
+        var permissoesGerais = Util.ListarTodasPermissoesToObj(typeof(IPermissionEsistem),true);
+
+        foreach (var permissao in permissoesGerais.Permissoes)
         {
-            Console.WriteLine(item);
+            Console.WriteLine($"{permissao.Nome} / {permissao.Action} / {permissao.Description}");
         }
 
-        Console.WriteLine("");
+        var jsonResult = JsonSerializer.Serialize(permissoesGerais, new JsonSerializerOptions { WriteIndented = true });
 
-        var permissoesFormatadas = Util.ListarTodasPermissoes(typeof(IPermissionEsistem),true);
-
-        foreach (var permissao in permissoesFormatadas)
-        {
-            Console.WriteLine(permissao);
-        }
-
-
+        Console.WriteLine(jsonResult);
 
     }
 

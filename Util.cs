@@ -96,4 +96,70 @@ public static Dictionary<string, List<string>> ListarClassesConstantes(object ob
     }
 
 
+    public static List<string> ListarTodasPermissoesFormatadas(Type interfaceType, bool excluirClassesAbstratas)
+    {
+        var permissoesFormatadas = new List<string>();
+        var assembly = Assembly.GetExecutingAssembly();
+
+        // Busca todas as classes que implementam a interface IPermissionEsistem no assembly
+        var tiposImplementamInterface = assembly.GetTypes()
+            .Where(t => interfaceType.IsAssignableFrom(t) && t.IsClass && (!excluirClassesAbstratas || !t.IsAbstract));
+
+        foreach (var tipo in tiposImplementamInterface)
+        {
+            // Tenta obter o valor da constante `Resource`
+            var resourceConst = tipo.GetField("Resource", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+            var resourceValue = resourceConst?.GetRawConstantValue()?.ToString() ?? "UnknownResource";
+
+            // Obtém as permissões a partir da classe base
+            var permissaoBase = (dynamic)Activator.CreateInstance(tipo);
+            var permissoes = permissaoBase.Permissoes();
+
+            // Formata as permissões
+            foreach (var permissao in permissoes)
+            {
+                var nome = EsistemPermission.NameForEsistem(permissao.Action, resourceValue);
+                permissoesFormatadas.Add($"{nome} - {permissao.Action} - {permissao.Description}");
+            }
+        }
+
+        return permissoesFormatadas;
+    }
+
+public static PermissoesGerais ListarTodasPermissoesToObj(Type interfaceType, bool excluirClassesAbstratas)
+    {
+        var permissoesGerais = new PermissoesGerais();
+        var assembly = Assembly.GetExecutingAssembly();
+
+        // Busca todas as classes que implementam a interface IPermissionEsistem no assembly
+        var tiposImplementamInterface = assembly.GetTypes()
+            .Where(t => interfaceType.IsAssignableFrom(t) && t.IsClass && (!excluirClassesAbstratas || !t.IsAbstract));
+
+        foreach (var tipo in tiposImplementamInterface)
+        {
+            // Tenta obter o valor da constante `Resource`
+            var resourceConst = tipo.GetField("Resource", BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+            var resourceValue = resourceConst?.GetRawConstantValue()?.ToString() ?? "UnknownResource";
+
+            // Obtém as permissões a partir da classe base
+            var permissaoBase = (dynamic)Activator.CreateInstance(tipo);
+            var permissoes = permissaoBase.Permissoes();
+
+            // Adiciona as permissões ao objeto permissoesGerais
+            foreach (var permissao in permissoes)
+            {
+                var nome = EsistemPermission.NameForEsistem(permissao.Action, resourceValue);
+                permissoesGerais.Permissoes.Add(new PermissaoRegistro
+                {
+                    Nome = nome,
+                    Action = permissao.Action,
+                    Description = permissao.Description
+                });
+            }
+        }
+
+        return permissoesGerais;
+    }
+
+
 }

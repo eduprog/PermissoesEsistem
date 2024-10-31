@@ -1,0 +1,89 @@
+{
+  "Permissoes": [
+    {
+      "Nome": "PermissionsEsistem.CargosPessoa.Incluir",
+      "Action": "Incluir",
+      "Description": "Incluir CargosPessoa"
+    },
+    {
+      "Nome": "PermissionsEsistem.CargosPessoa.Visualizar",
+      "Action": "Visualizar",
+      "Description": "Visualizar CargosPessoa"
+    },
+    {
+      "Nome": "PermissionsEsistem.CargosPessoa.Editar",
+      "Action": "Editar",
+      "Description": "Editar CargosPessoa"
+    },
+    {
+      "Nome": "PermissionsEsistem.CargosPessoa.Excluir",
+      "Action": "Excluir",
+      "Description": "Excluir CargosPessoa"
+    },
+    {
+      "Nome": "PermissionsEsistem.CargosPessoa.Buscar",
+      "Action": "Buscar",
+      "Description": "Buscar CargosPessoa"
+    },
+    {
+      "Nome": "PermissionsEsistem.Pessoa.Incluir",
+      "Action": "Incluir",
+      "Description": "Incluir Pessoa"
+    },
+    {
+      "Nome": "PermissionsEsistem.Pessoa.Visualizar",
+      "Action": "Visualizar",
+      "Description": "Visualizar Pessoa"
+    },
+    {
+      "Nome": "PermissionsEsistem.Pessoa.Editar",
+      "Action": "Editar",
+      "Description": "Editar Pessoa"
+    },
+    {
+      "Nome": "PermissionsEsistem.Pessoa.Excluir",
+      "Action": "Excluir",
+      "Description": "Excluir Pessoa"
+    },
+    {
+      "Nome": "PermissionsEsistem.Pessoa.Buscar",
+      "Action": "Buscar",
+      "Description": "Buscar Pessoa"
+    },
+    {
+      "Nome": "PermissionsEsistem.Usuarios.Incluir",
+      "Action": "Incluir",
+      "Description": "Incluir Usuarios"
+    },
+    {
+      "Nome": "PermissionsEsistem.Usuarios.Visualizar",
+      "Action": "Visualizar",
+      "Description": "Visualizar Usuarios"
+    },
+    {
+      "Nome": "PermissionsEsistem.Usuarios.Editar",
+      "Action": "Editar",
+      "Description": "Editar Usuarios"
+    },
+    {
+      "Nome": "PermissionsEsistem.Usuarios.Excluir",
+      "Action": "Excluir",
+      "Description": "Excluir Usuarios"
+    },
+    {
+      "Nome": "PermissionsEsistem.Usuarios.Buscar",
+      "Action": "Buscar",
+      "Description": "Buscar Usuarios"
+    },
+    {
+      "Nome": "PermissionsEsistem.Usuarios.AtivarDesativar",
+      "Action": "AtivarDesativar",
+      "Description": "Ativa ou Desativa usu\u00E1rio do sistema. Usado geralmente por administradores"
+    },
+    {
+      "Nome": "PermissionsEsistem.Usuarios.AlterarPermissao",
+      "Action": "AlterarPermissao",
+      "Description": "AlterarPermissao Usuarios"
+    }
+  ]
+}

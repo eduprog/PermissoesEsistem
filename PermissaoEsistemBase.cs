@@ -18,7 +18,7 @@ public abstract class PermissaoEsistemBase<TEntity> : IPermissionEsistem
         new EsistemPermission($"{Buscar} {ResourceName()}", Buscar, ResourceName())
     ];
 
-    public IReadOnlyCollection<EsistemPermission> Permissoes() => _permissions.AsReadOnly();
+    public IReadOnlyCollection<EsistemPermission> Permissoes() => _permissions;
 
     /// <summary>
     /// adiciona a permissão diretamente no resource
